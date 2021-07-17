@@ -1,0 +1,31 @@
+﻿@inject IJSRuntime js
+@if (l.Count > 0)
+{
+    <input type="checkbox" @bind="check" />
+}
+
+@foreach (var i in l)
+{
+    <Print p="i" check=" check" Delete="DeleteItem" />
+
+    
+
+}
+
+
+
+
+
+@code {
+    public bool check = false;
+    [Parameter] public List<Data> l { get; set; }
+    private async Task DeleteItem(Data d2)
+    {
+        var confirmed = await js.InvokeAsync<bool>("confirm", $"Are You Sure Want to Delete{d2.Id}{d2.Name}{d2.Address}");
+        if(confirmed)
+        {
+            l.Remove(d2);
+        }
+    }
+
+}

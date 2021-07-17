@@ -1,0 +1,20 @@
+﻿
+
+
+@inject IRepository re
+
+<Loop l="d"/>
+
+
+
+
+@code
+{
+   
+    private List<Data> d;
+    protected override void OnInitialized()
+    {
+        d = re.GetData();
+
+    }
+}

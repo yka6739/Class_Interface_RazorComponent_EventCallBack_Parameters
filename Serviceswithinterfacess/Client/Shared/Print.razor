@@ -1,0 +1,25 @@
+﻿
+@inject IJSRuntime js
+
+
+<div>
+
+    <p> ID Is :<b>@p.Id</b> </p>
+    <p>Name Is: <b>@p.Name</b></p>
+    <p>Address Is : <b>@p.Address</b></p>
+    @if (check)
+    {
+       
+       <button @onclick="(()=>Delete.InvokeAsync(p))">Delete</button>
+    }
+
+</div>
+@code {
+    [Parameter] public Data p { get; set; }
+    [Parameter] public bool check { get; set; }
+    [Parameter] public List<Data> l { get; set; }
+    [Parameter] public EventCallback<Data> Delete { get; set; }
+
+
+
+}
